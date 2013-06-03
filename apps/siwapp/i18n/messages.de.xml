@@ -36,7 +36,7 @@
       <!-- ##### DASHBOARD ##### -->
       <trans-unit>
         <source>Dashboard</source>
-        <target>Übersichtsseite</target>
+        <target>Übersicht</target>
       </trans-unit>
       <trans-unit>
         <source>Recent invoices</source>
@@ -213,7 +213,7 @@
       </trans-unit>
       <trans-unit>
         <source>view all  ([1] invoices)</source>
-        <target>alle  ([1] Rechnungen betrachten)</target>
+        <target>zeige alle  ([1] Rechnungen)</target>
       </trans-unit>
       <trans-unit>
         <source>Issued at</source>
@@ -221,7 +221,7 @@
       </trans-unit>
       <trans-unit>
         <source>will become overdue at</source>
-        <target>wird überfällig am</target>
+        <target>wird fällig am</target>
       </trans-unit>
       <trans-unit>
         <source>opened</source>
@@ -229,7 +229,7 @@
       </trans-unit>
       <trans-unit>
         <source>closed</source>
-        <target>geschlossen</target>
+        <target>geschl.</target>
       </trans-unit>
       <trans-unit>
         <source>overdue</source>
@@ -241,7 +241,7 @@
       </trans-unit>
       <trans-unit>
         <source>Sent by email</source>
-        <target>Mit Email versendet</target>
+        <target>Als Email versenden</target>
       </trans-unit>
       <trans-unit>
         <source>Force to be closed</source>
@@ -258,11 +258,11 @@
       <!-- ##### RECURRING INVOICES ##### -->
       <trans-unit>
         <source>Recurring Invoices</source>
-        <target>Wiederkehrende Rechnungen</target>
+        <target>Zyklische Rechnungen</target>
       </trans-unit>
       <trans-unit>
         <source>New Recurring Invoice</source>
-        <target>Neue wiederkehrende Rechnung</target>
+        <target>Neue zykl. Rechnung</target>
       </trans-unit>
       <trans-unit>
         <source>Overdue</source>
@@ -286,7 +286,7 @@
       </trans-unit>
       <trans-unit>
         <source>Edit Recurring Invoice</source>
-        <target>Wiederkehrende Rechnung bearbeiten</target>
+        <target>Zykl. Rechnung bearbeiten</target>
       </trans-unit>
       <trans-unit>
         <source>All %d recurring invoices were processed.</source>
@@ -378,7 +378,7 @@
       </trans-unit>
       <trans-unit>
         <source>Maximum number of occurrences</source>
-        <target>Max. Anzahl an wiederkehrenden Rechnungen</target>
+        <target>Max. Anzahl an Zyklen</target>
       </trans-unit>
       <trans-unit>
         <source>Days to due</source>
@@ -391,7 +391,7 @@
       </trans-unit>
       <trans-unit>
         <source>New Estimate</source>
-        <target>Neue Angebot</target>
+        <target>Neues Angebot</target>
       </trans-unit>
       <trans-unit>
         <source>Save and create invoice</source>
@@ -996,7 +996,7 @@
       </trans-unit>
       <trans-unit>
         <source>Customers Module</source>
-        <target>Benutzerdefinierte Module</target>
+        <target>Kunden Modul</target>
       </trans-unit>
       <trans-unit>
         <source>Estimates Module</source>

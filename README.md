@@ -1,8 +1,8 @@
 siwapp-sf1 FORK
 ===============
 
-Online Invoice Management based on Symfony 1
-Forked from siwapp/siwapp-sf1
+Online Invoice Management based on Symfony 1.
+Forked from siwapp/siwapp-sf1.
 
 Customizations
 --------------

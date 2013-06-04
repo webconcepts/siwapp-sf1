@@ -60,7 +60,7 @@ $invoice = $invoiceForm->getObject();
     }
     if (!$invoice->isNew())
     {
-      echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$invoice->getId()."')", 'class=action print')." ";
+     // echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$invoice->getId()."')", 'class=action print')." ";
       echo gButton_to_function(__('PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$invoice->getId()."'", 'class=action pdf')."&nbsp;&nbsp;&nbsp;&nbsp;";
     }
     if ($invoice->isNew() || $db_draft)

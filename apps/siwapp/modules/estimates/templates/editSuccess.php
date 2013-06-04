@@ -57,7 +57,7 @@ $estimate = $estimateForm->getObject();
     }
     if (!$estimate->isNew())
     {
-      echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$estimate->getId()."')", 'class=action print')." ";
+      //echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$estimate->getId()."')", 'class=action print')." ";
       echo gButton_to_function(__('PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$estimate->getId()."'", 'class=action pdf')."&nbsp;&nbsp;&nbsp;&nbsp;";
     }
     if ($estimate->isNew() || $db_draft)

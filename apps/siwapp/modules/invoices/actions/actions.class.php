@@ -150,7 +150,7 @@ class invoicesActions extends sfActions
     $i18n = $this->getContext()->getI18N();
     $result  = false;
     try {
-      $message = new InvoiceMessage($invoice);
+      $message = new InvoiceMessage($invoice,$i18n);
       if($message->getReadyState())
       {
         $result = $this->getMailer()->send($message);

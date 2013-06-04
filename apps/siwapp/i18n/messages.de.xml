@@ -87,6 +87,10 @@
         <target>Einnahmen</target>
       </trans-unit>
       <!-- ##### INVOICES ##### -->
+	  <trans-unit>
+        <source>Invoice</source>
+        <target>Rechnung</target>
+      </trans-unit>
       <trans-unit>
         <source>Invoices</source>
         <target>Rechnungen</target>
@@ -385,6 +389,10 @@
         <target>Tage bis Fälligkeit</target>
       </trans-unit>
       <!-- ##### ESTIMATES ##### -->
+	  <trans-unit>
+        <source>Estimate</source>
+        <target>Angebot</target>
+      </trans-unit>
       <trans-unit>
         <source>Estimates</source>
         <target>Angebote</target>
@@ -400,6 +408,10 @@
       <trans-unit>
         <source>The estimate was successfully saved.</source>
         <target>Das Angebot wurde erfolgreich gespeichert.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The estimate was successfully sent.</source>
+        <target>Das Angebot wurde erfolgreich gesendet.</target>
       </trans-unit>
       <trans-unit>
         <source>The invoice was successfully created.</source>

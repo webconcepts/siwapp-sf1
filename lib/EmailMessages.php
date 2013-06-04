@@ -76,7 +76,7 @@ class InvoiceMessage extends SiwappMessage
   /** this variable indicates if the message is ready to be sent or not */
   private $ready = false;
 
-  public function __construct($invoice)
+  public function __construct($invoice,$i18n = null)
   {
     parent::__construct();
     $this->setTo($invoice->customer_email, $invoice->customer_name);
@@ -88,6 +88,11 @@ class InvoiceMessage extends SiwappMessage
     }
     $data[] = $invoice;
     $model = get_class($invoice);
+	$translatedModel = $model;
+	if (!empty($i18n))
+	{
+		$translatedModel = $i18n->__($model);
+	}
     $printer = new Printer($model, TemplateTable::getTemplateForModel($model)->getId());
 
     try
@@ -96,11 +101,11 @@ class InvoiceMessage extends SiwappMessage
       $pdf = $printer->renderPdf($data)->output();
       $attachment = new Swift_Attachment(
                             $pdf,
-                            $model.'-'.$invoice->getId().'.pdf',
+                            $translatedModel.'-'.$invoice->getId().'.pdf',
                             'application/pdf'
                             );
       $this
-        ->setSubject(PropertyTable::get('company_name').' ['.$model.': '.$invoice.']')
+        ->setSubject(PropertyTable::get('company_name').' ['.$translatedModel.': '.$invoice.']')
         ->setBody($printer->render($data), 'text/html')
         ->attach($attachment);
       $this->setReadyState(true);

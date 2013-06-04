@@ -72,17 +72,23 @@ class printActions extends sfActions
    */
   public function executePdf(sfWebRequest $request)
   {
+	$i18n = $this->getContext()->getI18N();
     $model = $request->getParameter('model');
+	$translatedModel = $model;
+	if (!empty($i18n))
+	{
+		$translatedModel = $i18n->__($model);
+	}
     switch($n = count($ids = (array) $this->getRequestParameter('ids', array())))
     {
       case 0:
         $this->forward404();
         break;
       case 1:
-        $name = $model."-{$ids[0]}";
+        $name = $translatedModel."-{$ids[0]}";
         break;
       default:
-        $name = "$n-".$model."s";
+        $name = "$n-".$translatedModel."s";
         break;
     }
     try

@@ -144,7 +144,7 @@ class estimatesActions extends sfActions
     $i18n = $this->getContext()->getI18N();
     $result  = false;
     try {
-      $message = new InvoiceMessage($estimate);
+      $message = new InvoiceMessage($estimate,$i18n);
       if($message->getReadyState())
       {
         $result = $this->getMailer()->send($message);

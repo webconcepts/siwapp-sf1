@@ -837,6 +837,10 @@
         <source>The template has not been saved due to some errors.</source>
         <target></target>
       </trans-unit>
+      <trans-unit>
+        <source>The template was updated successfully.</source>
+        <target></target>
+      </trans-unit>
       <!-- ##### MISCELANEOUS ##### -->
       <trans-unit>
         <source>Are you sure?</source>

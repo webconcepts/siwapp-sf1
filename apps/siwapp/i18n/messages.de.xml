@@ -837,6 +837,10 @@
         <source>The template has not been saved due to some errors.</source>
         <target>Die Vorlage konnte wegen augetretener Fehlrer nicht gespeichert werden.</target>
       </trans-unit>
+      <trans-unit>
+        <source>The template was updated successfully.</source>
+        <target>Die Vorlage wurde erfolgreich gespeichert.</target>
+      </trans-unit>
       <!-- ##### MISCELANEOUS ##### -->
       <trans-unit>
         <source>Are you sure?</source>

@@ -21,6 +21,8 @@ class Common_Twig_Extension extends Twig_Extension
       'count'       => new Twig_Filter_Function('count'),
       'unhttp'      => new Twig_Filter_Function('common_twig_extension_unhttp'),
       'product_reference' => new Twig_Filter_Function('product_reference'),
+	  // Custom
+	  'globalurl'      => new Twig_Filter_Function('common_twig_extension_globalurl'),
     );
   }
   
@@ -28,6 +30,11 @@ class Common_Twig_Extension extends Twig_Extension
   {
     return 'common';
   }
+}
+
+function common_twig_extension_globalurl($url)
+{
+  return "http://" . $_SERVER['HTTP_HOST'] .$url;
 }
 
 function common_twig_extension_format_currency($amount, $culture = null)

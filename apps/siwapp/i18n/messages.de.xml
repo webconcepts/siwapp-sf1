@@ -403,11 +403,11 @@
       </trans-unit>
       <trans-unit>
         <source>The invoice was successfully created.</source>
-        <target>Die Rechnung wurde erfolgreich erstellt</target>
+        <target>Die Rechnung wurde erfolgreich erstellt.</target>
       </trans-unit>
       <trans-unit>
         <source>The invoice could not be created due to an error.</source>
-        <target>Aufgrund eines Fehlers konnte die Rechnung nicht erstellt werden</target>
+        <target>Aufgrund eines Fehlers konnte die Rechnung nicht erstellt werden.</target>
       </trans-unit>
       <trans-unit>
         <source>Estimate details</source>
@@ -464,11 +464,11 @@
       </trans-unit>
       <trans-unit>
         <source>The customer has not been saved due to some errors.</source>
-        <target>Der Kunde konnte nicht gespeichert werden. Es sind Fehler aufgetreten.</target>
+        <target>Aufgrund eines Fehlers konnte der Kunde nicht gespeichert werden.</target>
       </trans-unit>
       <trans-unit>
         <source>%d customers were successfully deleted.</source>
-        <target>%d Kunden wurden erfolgreich gelöscht</target>
+        <target>%d Kunden wurden erfolgreich gelöscht.</target>
       </trans-unit>
       <!-- ##### PRODUCTS ##### -->
       <trans-unit>
@@ -502,7 +502,7 @@
       </trans-unit>
       <trans-unit>
         <source>to</source>
-        <target>an</target>
+        <target>bis</target>
       </trans-unit>
       <trans-unit>
         <source>last week</source>
@@ -526,7 +526,7 @@
       </trans-unit>
       <trans-unit>
         <source>Opened</source>
-        <target>Geöffnet</target>
+        <target>Offen</target>
       </trans-unit>
       <trans-unit>
         <source>Closed</source>
@@ -615,7 +615,7 @@
       </trans-unit>
       <trans-unit>
         <source>Showing [1]-[2] of [3] results</source>
-        <target>Anzeige von [1]-[2] aus [3] Ergebnissen</target>
+        <target>Zeige [1]-[2] aus [3] Ergebnissen</target>
       </trans-unit>
       <!-- ##### SETTINGS ##### -->
       <trans-unit>
@@ -632,7 +632,7 @@
       </trans-unit>
       <trans-unit>
         <source>Printing templates</source>
-        <target>Vorlagen drucken</target>
+        <target>Druckvorlagen</target>
       </trans-unit>
       <trans-unit>
         <source>Your settings were successfully saved.</source>
@@ -677,7 +677,7 @@
       </trans-unit>
       <trans-unit>
         <source>Web</source>
-        <target></target>
+        <target>Web</target>
       </trans-unit>
       <trans-unit>
         <source>Logo</source>
@@ -685,7 +685,7 @@
       </trans-unit>
       <trans-unit>
         <source>Invoicing taxes</source>
-        <target>Steuern</target>
+        <target>Steuer</target>
       </trans-unit>
       <trans-unit>
         <source>Value</source>
@@ -725,11 +725,11 @@
       </trans-unit>
       <trans-unit>
         <source>Invoicing series</source>
-        <target>Rechnungskategorie</target>
+        <target>Nummernkreise</target>
       </trans-unit>
       <trans-unit>
         <source>Label</source>
-        <target>Kennzeichnung</target>
+        <target>Name</target>
       </trans-unit>
       <trans-unit>
         <source>Initial value</source>
@@ -741,7 +741,7 @@
       </trans-unit>
       <trans-unit>
         <source>The initial value will only be used for the first saved invoice of the series if there are no invoices assigned.</source>
-        <target>Wenn keine Rechnungen zugeordnet sind wird der Anfangswert nur für die ersten gespeicherten Rechnungen der Serie gespeichert.</target>
+        <target>Wenn keine Rechnungen zugeordnet sind wird der Anfangswert nur für die erste gespeicherte Rechnung der Serie verwendet.</target>
       </trans-unit>
       <trans-unit>
         <source>remove the current file</source>
@@ -770,11 +770,11 @@
       </trans-unit>
       <trans-unit>
         <source>Make it easy</source>
-        <target>Einfach</target>
+        <target>Voreinstellungen</target>
       </trans-unit>
       <trans-unit>
         <source>Results to display in listings</source>
-        <target>Anzahl der Ergebnisse</target>
+        <target>Anzahl der Listen-Ergebnisse</target>
       </trans-unit>
       <trans-unit>
         <source>Search filter</source>
@@ -1008,11 +1008,11 @@
       </trans-unit>
       <trans-unit>
         <source>Use for Invoices</source>
-        <target>Verwende für Rechnungen</target>
+        <target>Verwendet für Rechnungen</target>
       </trans-unit>
       <trans-unit>
         <source>Use for Estimates</source>
-        <target>Verwende für Angebote</target>
+        <target>Verwendet für Angebote</target>
       </trans-unit>
       <trans-unit>
         <source>No selection. Nothing to do.</source>

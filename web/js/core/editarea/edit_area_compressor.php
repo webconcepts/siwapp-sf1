@@ -16,9 +16,9 @@
 	$param['use_gzip']= true;						// Enable gzip compression
 	// END CONFIG
 	
-	$compressor= new Compressor($param);
+	$compressor= new EditAreaCompressor($param);
 	
-	class Compressor{
+	class EditAreaCompressor{
 	
 		
 		function compressor($param)

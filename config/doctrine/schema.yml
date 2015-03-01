@@ -230,7 +230,7 @@ Profile:
       class:  sfGuardUser
       foreignType:  one
       onDelete:     cascade
-      
+
 Template:
   actAs:
     Timestampable:
@@ -242,6 +242,18 @@ Template:
     name:         string(255)
     template:     clob
     models:        string(200)
+
+EmailTemplate:
+  actAs:
+    Timestampable:
+    Sluggable:
+      unique:     true
+      fields:     [name]
+      canUpdate:  false
+  columns:
+    name:         string(255)
+    template:     clob
+    models:       string(200)
 
 Series:
   columns:

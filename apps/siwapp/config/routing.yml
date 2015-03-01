@@ -98,6 +98,14 @@ templates:
   url:   /settings/templates/:action
   param:  { module: printTemplates, action: index, searchForm: false, tab: templates }
 
+emailtemplates_edit:
+  url:   /settings/emailtemplates/edit/:id
+  param:  { module: emailTemplates, action: edit, searchForm: false, tab: emailtemplates }
+
+emailtemplates:
+  url:   /settings/emailtemplates/:action
+  param:  { module: emailTemplates, action: index, searchForm: false, tab: emailtemplates }
+
 siwapp_modules:
   url:  /settings/modules
   param: { module: configuration, action: siwappModules, searchForm: false, tab: siwapp_modules }

@@ -88,17 +88,27 @@ class InvoiceMessage extends SiwappMessage
     }
     $data[] = $invoice;
     $model = get_class($invoice);
-	$translatedModel = $model;
-	if (!empty($i18n))
-	{
-		$translatedModel = $i18n->__($model);
-	}
-    $printer = new Printer($model, TemplateTable::getTemplateForModel($model)->getId());
+  	$translatedModel = $model;
+  	if (!empty($i18n))
+  	{
+  		$translatedModel = $i18n->__($model);
+  	}
+    $invoicePrinter = new Printer($model, TemplateTable::getTemplateForModel($model)->getId());
+
+    // attempt to render an email template for message body
+    try {
+      $emailTemplate = EmailTemplateTable::getTemplateForModel($model);
+      $emailPrinter = new EmailPrinter($model, $emailTemplate->getId());
+      $body = $emailPrinter->render($invoice);
+    }
+    catch(EmailTemplateNotFoundException $e) {
+      // default to outputing html version of invoice/estimate
+      $body = $invoicePrinter->render($data);
+    }
 
     try
     {
-      $body = $printer->render($data);
-      $pdf = $printer->renderPdf($data)->output();
+      $pdf = $invoicePrinter->renderPdf($data)->output();
       $attachment = new Swift_Attachment(
                             $pdf,
                             $translatedModel.'-'.$invoice->getId().'.pdf',
@@ -106,7 +116,7 @@ class InvoiceMessage extends SiwappMessage
                             );
       $this
         ->setSubject(PropertyTable::get('company_name').' ['.$translatedModel.': '.$invoice.']')
-        ->setBody($printer->render($data), 'text/html')
+        ->setBody($body, 'text/html')
         ->attach($attachment);
       $this->setReadyState(true);
       

@@ -2,6 +2,13 @@
 
 class Twig_Loader_Database implements Twig_LoaderInterface
 {
+  protected $table;
+
+  public function __construct($templateModel = 'Template')
+  {
+    $this->table = Doctrine::getTable($templateModel);
+  }
+
   public function getSource($name)
   {
     return $this->findTemplate($name)->getTemplate();
@@ -21,11 +28,11 @@ class Twig_Loader_Database implements Twig_LoaderInterface
   {
     if (is_numeric($name))
     {
-      $template = Doctrine::getTable('Template')->find($name);
+      $template = $this->table->find($name);
     }
     else
     {
-      $template = Doctrine::getTable('Template')->findOneBy('Slug', $name);
+      $template = $this->table->findOneBy('Slug', $name);
     }
     
     if (!$template)

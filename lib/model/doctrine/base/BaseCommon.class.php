@@ -39,6 +39,7 @@
  * @property date $starting_date
  * @property date $finishing_date
  * @property date $last_execution_date
+ * @property boolean $send_on_create
  * @property Customer $Customer
  * @property Series $Series
  * @property Doctrine_Collection $Items
@@ -257,6 +258,10 @@ abstract class BaseCommon extends sfDoctrineRecord
              ));
         $this->hasColumn('last_execution_date', 'date', null, array(
              'type' => 'date',
+             ));
+        $this->hasColumn('send_on_create', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
 
 

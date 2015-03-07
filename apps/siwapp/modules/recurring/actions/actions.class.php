@@ -176,12 +176,34 @@ class recurringActions extends sfActions
   {
     if ($t1 = RecurringInvoiceQuery::create()->countPending())
     {
-      RecurringInvoiceTable::createPendingInvoices();
+      $invoices = RecurringInvoiceTable::createPendingInvoices();
+      $this->sendEmails($invoices); // send invoices
       
       $i18n = $this->getContext()->getI18N();
-      $this->getUser()->info(sprintf($i18n->__("All %d recurring invoices were processed."), $t1));
+      $this->getUser()->info(sprintf($i18n->__("All %d recurring invoices were processed."), $t1));      
     }
     
     $this->redirect('@recurring');
+  }
+
+  /**
+   * Send given emails if recurring parent is set to send_on_create
+   * 
+   * @param array $invoices array of Invoice objects to send if applicable
+   */
+  protected function sendEmails($invoices)
+  {
+    $sender = new InvoiceSender($this->getMailer(), $this->getContext()->getI18N()); 
+    foreach( $invoices as $i )
+    {      
+      if($i->getRecurringInvoice()->send_on_create) 
+      {
+        if(!$sender->send($invoice))
+        {
+          $message = sprintf($i18n->__('There is a problem with invoice %s'), $invoice).': '.$sender->error;
+          $this->getUser()->error($message);
+        }
+      }
+    }
   }
 }

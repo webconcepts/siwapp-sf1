@@ -147,25 +147,14 @@ class invoicesActions extends sfActions
   
   protected function sendEmail(Invoice $invoice)
   {
-    $i18n = $this->getContext()->getI18N();
-    $result  = false;
-    try {
-      $message = new InvoiceMessage($invoice,$i18n);
-      if($message->getReadyState())
-      {
-        $result = $this->getMailer()->send($message);
-        if($result)
-        {
-          $invoice->setSentByEmail(true);
-          $invoice->save();
-        }
-      }
-    } catch (Exception $e) {
-      $message = sprintf($i18n->__('There is a problem with invoice %s'), $invoice).': '.$e->getMessage();
+    $sender = new InvoiceSender($this->getMailer(), $this->getContext()->getI18N());    
+    if(!$sender->send($invoice))
+    {
+      $message = sprintf($i18n->__('There is a problem with invoice %s'), $invoice).': '.$sender->error;
       $this->getUser()->error($message);
+      return false;
     }
-    
-    return $result;
+    return true;
   }
   
   protected function processForm(sfWebRequest $request, sfForm $form)

@@ -50,6 +50,7 @@ abstract class BaseCommonForm extends BaseFormDoctrine
       'starting_date'           => new sfWidgetFormDate(),
       'finishing_date'          => new sfWidgetFormDate(),
       'last_execution_date'     => new sfWidgetFormDate(),
+      'send_on_create'          => new sfWidgetFormInputCheckbox(),
       'created_at'              => new sfWidgetFormDateTime(),
       'updated_at'              => new sfWidgetFormDateTime(),
     ));
@@ -90,6 +91,7 @@ abstract class BaseCommonForm extends BaseFormDoctrine
       'starting_date'           => new sfValidatorDate(array('required' => false)),
       'finishing_date'          => new sfValidatorDate(array('required' => false)),
       'last_execution_date'     => new sfValidatorDate(array('required' => false)),
+      'send_on_create'          => new sfValidatorBoolean(array('required' => false)),
       'created_at'              => new sfValidatorDateTime(),
       'updated_at'              => new sfValidatorDateTime(),
     ));

@@ -19,6 +19,7 @@ $invoice = $invoiceForm->getObject();
     <ul id="status">
       <li><?php echo __('Status')?>:&nbsp;<span class="status <?php echo ($stat = $invoice->getStatusString()) ?>"><?php echo __($stat)?></span></li>
       <?php echo $invoiceForm['enabled']->renderRow(); ?>
+      <?php echo $invoiceForm['send_on_create']->renderRow(); ?>
     </ul>
     
     <?php include_partial('common/globalErrors', array('form' => $invoiceForm)); ?>

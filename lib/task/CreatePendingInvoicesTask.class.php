@@ -25,10 +25,29 @@ EOF;
       
   protected function execute($arguments = array(), $options = array())
   {
-    $databaseManager = new sfDatabaseManager($this->configuration);
+    $config = $this->configuration;
+    $appConfig = $config::getApplicationConfiguration($this->namespace, sfConfig::get('sf_environment'), true);
+    sfContext::createInstance($appConfig);
+
+    $databaseManager = new sfDatabaseManager($config);   
     
-    RecurringInvoiceTable::createPendingInvoices();
+    // generate pending
+    $invoices = RecurringInvoiceTable::createPendingInvoices();
+
+    // send invoices
+    $sender = new InvoiceSender($this->getMailer(), new sfI18n($appConfig));
+    foreach( $invoices as $i )
+    {      
+      if($i->getRecurringInvoice()->send_on_create) 
+      {
+        if(!$sender->send($i))
+        {
+          $this->logBlock('Problem sending '.$i->getId().': '.$sender->error, 'ERROR');
+        }
+      }
+    }
     
     $this->logSection('siwapp', 'Done');
   }
+
 }

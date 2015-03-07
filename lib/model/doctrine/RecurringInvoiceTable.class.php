@@ -10,6 +10,7 @@ class RecurringInvoiceTable extends Doctrine_Table
     'week'  => 'Weeks',
     'day'   => 'Days'
     );
+  
   /**
    * Check status on all recurringInvoices
    * and sets 'pending' if needed
@@ -38,7 +39,7 @@ class RecurringInvoiceTable extends Doctrine_Table
   /**
    * creates all the pending invoices
    *
-   * @return void
+   * @return array of created invoices
    **/
   public static function createPendingInvoices()
   {
@@ -48,6 +49,7 @@ class RecurringInvoiceTable extends Doctrine_Table
     $collection = RecurringInvoiceQuery::create()
       ->status(RecurringInvoice::PENDING)
       ->execute();
+    $created = array();
     if ($collection->count())
     {
       foreach ($collection as $r)
@@ -55,10 +57,15 @@ class RecurringInvoiceTable extends Doctrine_Table
         while($r->countPendingInvoices() > 0)
         {
           $i = $r->generateInvoice();
-          $r->refresh(true);
+          if( $i )
+          {
+            $created[] = $i;            
+          }          
+          $r->refresh(true);  
         }
         $r->checkStatus()->save();
-      }
+      }      
     }
+    return $created;
   }
 }

@@ -14,31 +14,11 @@
  *
  * @author Carlos Escribano <carlos@markhaus.com>
  */
-class Printer
-{
-  protected
-    $model,
-    $template,
-    $loader;
-  
-  /**
-   * @param string Model name
-   * @param mixed $template param needed by template loader
-   */
-  public function __construct($model, $template)
-  {
-    $this->model    = strtolower($model);
-    $this->template = $template;
-    $this->loader   = new Twig_Loader_Database();
-  }
-  
+class Printer extends PrinterAbstract
+{  
   public function render($data, $pdf = false)
   {
-    $twig = new Twig_Environment($this->loader, array('cache'=>sfConfig::get('sf_cache_dir'), 'auto_reload'=>true));
-    // coupled!
-    $twig->addExtension(new Common_Twig_Extension());
-    
-    $tpl = $twig->loadTemplate($this->template);
+    $tpl = $this->twig->loadTemplate($this->template);
     
     $head = null;
     $body = null;
@@ -93,6 +73,5 @@ class Printer
     ini_set('error_reporting',$previous_error_reporting);
 
     return $q->getPdf();
-  }
-  
+  }  
 }

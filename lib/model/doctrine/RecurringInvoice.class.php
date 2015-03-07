@@ -164,7 +164,7 @@ class RecurringInvoice extends BaseRecurringInvoice
   /**
    * Generates and saves an invoice based on this recurring
    *
-   * @return Invoice
+   * @return mixed returns Invoice if saved, or false on failure
    **/
   public function generateInvoice()
   {
@@ -207,9 +207,10 @@ class RecurringInvoice extends BaseRecurringInvoice
     {
       $this->setLastExecutionDate(sfDate::getInstance()->format('Y-m-d'));
       $this->save();
+      return $i;
     }
     
-    return $i;
+    return false;
   }
 
 }

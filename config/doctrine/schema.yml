@@ -209,6 +209,9 @@ RecurringInvoice:
     last_execution_date:
       type: date
       default: NULL
+    send_on_create:
+      type: boolean
+      default: false
   
 Profile:
   tableName: sf_guard_user_profile

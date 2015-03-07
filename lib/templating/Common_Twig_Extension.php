@@ -21,6 +21,7 @@ class Common_Twig_Extension extends Twig_Extension
       'count'       => new Twig_Filter_Function('count'),
       'unhttp'      => new Twig_Filter_Function('common_twig_extension_unhttp'),
       'product_reference' => new Twig_Filter_Function('product_reference'),
+      'firstword'   => new Twig_Filter_Function('common_twig_extension_first_word'),
 	  // Custom
 	  'globalurl'      => new Twig_Filter_Function('common_twig_extension_globalurl'),
     );
@@ -55,4 +56,10 @@ function common_twig_extension_unhttp($url)
 
 function product_reference($product_id){
     return Doctrine::getTable("Product")->getReference($product_id);
+}
+
+function common_twig_extension_first_word($string) 
+{
+  $array = explode(' ', $string);
+  return $array[0];
 }

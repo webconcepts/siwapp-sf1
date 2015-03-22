@@ -5,7 +5,7 @@
  */
 class EmailPrinter extends PrinterAbstract
 {
-  protected $loaderTemplateModel = 'EmailTemplate';
+  protected $templateModel = 'EmailTemplate';
 
   /**
    * Render message body
@@ -14,7 +14,21 @@ class EmailPrinter extends PrinterAbstract
    */
   public function render($data)
   {
-    $tpl = $this->twig->loadTemplate($this->template);
+    $tpl = $this->twig()->loadTemplate($this->template);
+    return  $tpl->render(array(
+      $this->model => $data,
+      'settings'   => new SettingsTagsArray()
+    ));
+  }
+
+  /**
+   * Render email subject line
+   * @param array $data data for template
+   * @return string HTML
+   */
+  public function renderSubject($data)
+  {
+    $tpl = $this->twig('subject')->loadTemplate($this->template);
     return  $tpl->render(array(
       $this->model => $data,
       'settings'   => new SettingsTagsArray()

@@ -18,7 +18,7 @@ class Printer extends PrinterAbstract
 {  
   public function render($data, $pdf = false)
   {
-    $tpl = $this->twig->loadTemplate($this->template);
+    $tpl = $this->twig()->loadTemplate($this->template);
     
     $head = null;
     $body = null;

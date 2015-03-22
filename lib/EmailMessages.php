@@ -100,10 +100,15 @@ class InvoiceMessage extends SiwappMessage
       $emailTemplate = EmailTemplateTable::getTemplateForModel($model);
       $emailPrinter = new EmailPrinter($model, $emailTemplate->getId());
       $body = $emailPrinter->render($invoice);
+      $subject = $emailPrinter->renderSubject($invoice);
     }
     catch(EmailTemplateNotFoundException $e) {
       // default to outputing html version of invoice/estimate
       $body = $invoicePrinter->render($data);
+    }
+
+    if( empty($subject) ) {
+      $subject = PropertyTable::get('company_name').' ['.$translatedModel.': '.$invoice.']';
     }
 
     try
@@ -115,7 +120,7 @@ class InvoiceMessage extends SiwappMessage
                             'application/pdf'
                             );
       $this
-        ->setSubject(PropertyTable::get('company_name').' ['.$translatedModel.': '.$invoice.']')
+        ->setSubject($subject)
         ->setBody($body, 'text/html')
         ->attach($attachment);
       $this->setReadyState(true);

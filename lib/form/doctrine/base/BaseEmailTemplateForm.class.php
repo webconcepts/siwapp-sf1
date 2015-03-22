@@ -17,6 +17,7 @@ abstract class BaseEmailTemplateForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'         => new sfWidgetFormInputHidden(),
       'name'       => new sfWidgetFormInputText(),
+      'subject'    => new sfWidgetFormInputText(),
       'template'   => new sfWidgetFormTextarea(),
       'models'     => new sfWidgetFormInputText(),
       'created_at' => new sfWidgetFormDateTime(),
@@ -27,6 +28,7 @@ abstract class BaseEmailTemplateForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'name'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'subject'    => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'template'   => new sfValidatorString(array('required' => false)),
       'models'     => new sfValidatorString(array('max_length' => 200, 'required' => false)),
       'created_at' => new sfValidatorDateTime(),

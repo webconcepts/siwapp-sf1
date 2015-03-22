@@ -3,20 +3,23 @@
 class Twig_Loader_Database implements Twig_LoaderInterface
 {
   protected $table;
+  protected $templateField;
 
-  public function __construct($templateModel = 'Template')
-  {
+  public function __construct($templateModel = 'Template', $templateField = 'template')
+  {    
     $this->table = Doctrine::getTable($templateModel);
+    $this->templateField = $templateField;
   }
 
   public function getSource($name)
   {
-    return $this->findTemplate($name)->getTemplate();
+    $get = 'get'.ucfirst($this->templateField); 
+    return $this->findTemplate($name)->$get();
   }
   
   public function getCacheKey($name)
-  {
-    return $this->findTemplate($name)->getName();
+  {    
+    return $this->templateField.'_'.$this->findTemplate($name)->getName();
   }
   
   public function isFresh($name, $time)

@@ -255,6 +255,7 @@ EmailTemplate:
       canUpdate:  false
   columns:
     name:         string(255)
+    subject:      string(100)
     template:     clob
     models:       string(200)
 

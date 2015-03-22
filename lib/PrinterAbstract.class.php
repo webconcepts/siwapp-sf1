@@ -4,9 +4,7 @@ abstract class PrinterAbstract
 {
 	protected $model;
     protected $template;
-    protected $twig;
-
-    protected $loaderTemplateModel = 'Template';
+    protected $templateModel = 'Template';
   
 	/**
 	 * @param string Model name
@@ -16,11 +14,21 @@ abstract class PrinterAbstract
 	{
 		$this->model    = strtolower($model);
 		$this->template = $template;		
+	}
 
-		$this->twig = new Twig_Environment(
-			new Twig_Loader_Database($this->loaderTemplateModel), 
+	/**
+	 * Get new twig environment
+	 * 
+	 * @param string $templateField the column in the template table to use as template
+	 * @return Twig_Environment
+	 */
+	public function twig($templateField = 'template')
+	{
+		$twig = new Twig_Environment(
+			new Twig_Loader_Database($this->templateModel, $templateField), 
 			array('cache'=>sfConfig::get('sf_cache_dir'), 'auto_reload'=>true)
 		);
-    	$this->twig->addExtension(new Common_Twig_Extension()); 
+    	$twig->addExtension(new Common_Twig_Extension());
+    	return $twig;
 	}
 }

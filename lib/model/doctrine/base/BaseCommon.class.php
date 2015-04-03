@@ -78,6 +78,7 @@
  * @method date                getStartingDate()            Returns the current record's "starting_date" value
  * @method date                getFinishingDate()           Returns the current record's "finishing_date" value
  * @method date                getLastExecutionDate()       Returns the current record's "last_execution_date" value
+ * @method boolean             getSendOnCreate()            Returns the current record's "send_on_create" value
  * @method Customer            getCustomer()                Returns the current record's "Customer" value
  * @method Series              getSeries()                  Returns the current record's "Series" value
  * @method Doctrine_Collection getItems()                   Returns the current record's "Items" collection
@@ -115,6 +116,7 @@
  * @method Common              setStartingDate()            Sets the current record's "starting_date" value
  * @method Common              setFinishingDate()           Sets the current record's "finishing_date" value
  * @method Common              setLastExecutionDate()       Sets the current record's "last_execution_date" value
+ * @method Common              setSendOnCreate()            Sets the current record's "send_on_create" value
  * @method Common              setCustomer()                Sets the current record's "Customer" value
  * @method Common              setSeries()                  Sets the current record's "Series" value
  * @method Common              setItems()                   Sets the current record's "Items" collection

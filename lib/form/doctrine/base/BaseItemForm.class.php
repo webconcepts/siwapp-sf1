@@ -20,7 +20,7 @@ abstract class BaseItemForm extends BaseFormDoctrine
       'discount'     => new sfWidgetFormInputText(),
       'common_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'add_empty' => true)),
       'product_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Product'), 'add_empty' => true)),
-      'description'  => new sfWidgetFormInputText(),
+      'description'  => new sfWidgetFormTextarea(),
       'unitary_cost' => new sfWidgetFormInputText(),
       'taxes_list'   => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Tax')),
     ));

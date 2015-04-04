@@ -128,17 +128,28 @@ class customersActions extends sfActions
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     $i18n = $this->getContext()->getI18N();
-    
+
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
+      $customer = $form->save();
+
+      // create customer invoice series
+      if( $request->getParameter('create_customer_series') ) 
+      {
+        $series = new Series();
+        if( $series->setDataFromCustomer($customer) ) 
+        {
+          $series->save();
+          $customer->setSeriesId($series->id)->save();
+        }
+      }
+
       $template = 'The customer was %s successfully %s.';
       $message  = $form->getObject()->isNew() ? 'created' : 'updated';
       $suffix   = null;
       $method   = 'info';
-      
-      $customer = $form->save();
-      
+            
       $this->getUser()->$method($i18n->__(sprintf($template, $message, $suffix)));
       $this->redirect('customers/edit?id='.$customer->id);
     }

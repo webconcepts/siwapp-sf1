@@ -99,6 +99,7 @@ class CustomerTable extends Doctrine_Table
       $res[$i]['contact_person'] = $item->getContactPerson();
       $res[$i]['invoicing_address'] = $item->getInvoicingAddress();
       $res[$i]['shipping_address'] = $item->getShippingAddress();
+      $res[$i]['series_id'] = $item->getSeriesId();
       $i++;
     }
     

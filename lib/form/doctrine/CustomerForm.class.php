@@ -24,6 +24,7 @@ class CustomerForm extends BaseCustomerForm
                              );
 
     $this->widgetSchema->setHelps($common_defaults);
+    $this->widgetSchema['series_id']->setLabel('Default invoice series');
 
     // validators
     $this->validatorSchema['email'] = new sfValidatorEmail(

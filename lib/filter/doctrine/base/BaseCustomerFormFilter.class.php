@@ -20,6 +20,7 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'contact_person'    => new sfWidgetFormFilterInput(),
       'invoicing_address' => new sfWidgetFormFilterInput(),
       'shipping_address'  => new sfWidgetFormFilterInput(),
+      'series_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Series'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -30,6 +31,7 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'contact_person'    => new sfValidatorPass(array('required' => false)),
       'invoicing_address' => new sfValidatorPass(array('required' => false)),
       'shipping_address'  => new sfValidatorPass(array('required' => false)),
+      'series_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Series'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('customer_filters[%s]');
@@ -57,6 +59,7 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'contact_person'    => 'Text',
       'invoicing_address' => 'Text',
       'shipping_address'  => 'Text',
+      'series_id'         => 'ForeignKey',
     );
   }
 }

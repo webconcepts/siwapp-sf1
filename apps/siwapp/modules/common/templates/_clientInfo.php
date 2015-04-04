@@ -31,7 +31,8 @@ echo javascript_tag("
             data[key].contact_person,
             data[key].customer_email,
             data[key].invoicing_address,
-            data[key].shipping_address
+            data[key].shipping_address,
+            data[key].series_id
           ], value: data[key].customer, result: data[key].customer };
         }
         return parsed;
@@ -45,6 +46,9 @@ echo javascript_tag("
       $('#".$invoiceForm['customer_email']->renderId()."').val(item[3]);
       $('#".$invoiceForm['invoicing_address']->renderId()."').val(item[4]);
       $('#".$invoiceForm['shipping_address']->renderId()."').val(item[5]);
+      if( item[6] ) {
+        $('#".$invoiceForm['series_id']->renderId()."').val(item[6]);
+      }
     });
 ");
 

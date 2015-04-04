@@ -9,17 +9,20 @@
  * @property string $value
  * @property integer $first_number
  * @property boolean $enabled
+ * @property Doctrine_Collection $Customer
  * @property Doctrine_Collection $Common
  * 
  * @method string              getName()         Returns the current record's "name" value
  * @method string              getValue()        Returns the current record's "value" value
  * @method integer             getFirstNumber()  Returns the current record's "first_number" value
  * @method boolean             getEnabled()      Returns the current record's "enabled" value
+ * @method Doctrine_Collection getCustomer()     Returns the current record's "Customer" collection
  * @method Doctrine_Collection getCommon()       Returns the current record's "Common" collection
  * @method Series              setName()         Sets the current record's "name" value
  * @method Series              setValue()        Sets the current record's "value" value
  * @method Series              setFirstNumber()  Sets the current record's "first_number" value
  * @method Series              setEnabled()      Sets the current record's "enabled" value
+ * @method Series              setCustomer()     Sets the current record's "Customer" collection
  * @method Series              setCommon()       Sets the current record's "Common" collection
  * 
  * @package    siwapp
@@ -56,6 +59,10 @@ abstract class BaseSeries extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Customer', array(
+             'local' => 'id',
+             'foreign' => 'series_id'));
+
         $this->hasMany('Common', array(
              'local' => 'id',
              'foreign' => 'series_id'));

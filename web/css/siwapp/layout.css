@@ -304,8 +304,19 @@ form.payments-form .buttons { margin:0; padding:0; }
 #product-data  input[type="text"],
 #product-data textarea
 { padding:0; }
+#customer-data label {
+  display:block;
+  font-weight:bold;
+  font-size:0.85em;
+  line-height:1em;
+  margin-bottom:0.5em;
+}
+#customer-data label.create_series { font-weight:normal; display:inline; padding-left:3px; }
+#customer-data #create_customer_series {  
+  width: auto;
+}
 
-#customer-data ul li, #product-data ul li { margin-bottom:1em; height:1em;}
+#customer-data ul li, #product-data ul li { padding-bottom:1.3em; overflow:auto; }
 
 #customer-data ul.error_list li, #product-data ul.error_list li  { float:right; clear:both; text-align:right; }
 #customer-data ul.error_list, #product-data ul.error_list{ margin:0; }
@@ -351,6 +362,7 @@ form.payments-form .buttons { margin:0; padding:0; }
 #product-data label.tip {
   position:absolute;
   font-size:10px;
+  font-weight: normal;
   line-height:10px;
   padding:4px 5px 3px;
   z-index:10000;

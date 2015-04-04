@@ -23,6 +23,7 @@ abstract class BaseCustomerForm extends BaseFormDoctrine
       'contact_person'    => new sfWidgetFormInputText(),
       'invoicing_address' => new sfWidgetFormTextarea(),
       'shipping_address'  => new sfWidgetFormTextarea(),
+      'series_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Series'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -34,6 +35,7 @@ abstract class BaseCustomerForm extends BaseFormDoctrine
       'contact_person'    => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'invoicing_address' => new sfValidatorString(array('required' => false)),
       'shipping_address'  => new sfValidatorString(array('required' => false)),
+      'series_id'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Series'), 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(

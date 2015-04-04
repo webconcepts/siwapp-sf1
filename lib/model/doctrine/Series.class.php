@@ -5,5 +5,28 @@
  */
 class Series extends BaseSeries
 {
-
+	/**
+	 * Set data for this series based on a given customer
+	 * 
+	 * @param Customer $customer
+	 * @param string $valuePrefix appended to end of customer id to make series value
+	 * @return mixed Series or false if data was not set
+	 */
+	public function setDataFromCustomer($customer, $valuePrefix = '-')
+	{
+		if( $customer->getName() && $customer->getIdentification() ) 
+		{
+			$this->setName($customer->getName());
+        	$this->setValue($customer->getIdentification().$valuePrefix);
+        	// set first number based on count of existing invoices for client
+        	if( $customer->id ) 
+        	{
+        		$invoices = Doctrine::getTable('Customer')->getNonDraftInvoices($customer->id);
+        		$count = $invoices->count();
+        		$this->setFirstNumber($count + 1);
+        	}
+        	return $this;
+		}
+		return false;		
+	}
 }

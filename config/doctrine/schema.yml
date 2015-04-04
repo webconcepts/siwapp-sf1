@@ -1,6 +1,6 @@
 options:
   charset: utf8
-  
+
 Customer:
   columns:
     name: string(100)
@@ -10,6 +10,12 @@ Customer:
     contact_person: string(100)
     invoicing_address: clob
     shipping_address: clob
+    series_id: integer
+  relations:
+    Series:
+      local: series_id
+      foreign: id
+      onDelete: set null
   indexes:
     cstm:
       fields: [name]
@@ -60,7 +66,7 @@ Common:
       fields: [customer_email]
     cntct:
       fields: [contact_person]
-  
+
 Invoice:
   inheritance:
     extends: Common
@@ -87,7 +93,7 @@ Invoice:
       foreignAlias: Invoices
       type: one
       onDelete: SET NULL
-      
+
 Estimate:
   inheritance:
     extends: Common
@@ -100,7 +106,7 @@ Estimate:
     sent_by_email:
       type: boolean
       default: false
-      
+
 # DEFAULT VALUES ARE MANDATORY IN ORDER TO AVOID CALCULATION
 # ERRORS IN VIEWS (ARITHMETIC WITH NULL ALWAYS RETURN NULL)
 Item:
@@ -212,7 +218,7 @@ RecurringInvoice:
     send_on_create:
       type: boolean
       default: false
-  
+
 Profile:
   tableName: sf_guard_user_profile
   columns:

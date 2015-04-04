@@ -12,6 +12,8 @@
  * @property string $contact_person
  * @property clob $invoicing_address
  * @property clob $shipping_address
+ * @property integer $series_id
+ * @property Series $Series
  * @property Doctrine_Collection $Commons
  * 
  * @method string              getName()              Returns the current record's "name" value
@@ -21,6 +23,8 @@
  * @method string              getContactPerson()     Returns the current record's "contact_person" value
  * @method clob                getInvoicingAddress()  Returns the current record's "invoicing_address" value
  * @method clob                getShippingAddress()   Returns the current record's "shipping_address" value
+ * @method integer             getSeriesId()          Returns the current record's "series_id" value
+ * @method Series              getSeries()            Returns the current record's "Series" value
  * @method Doctrine_Collection getCommons()           Returns the current record's "Commons" collection
  * @method Customer            setName()              Sets the current record's "name" value
  * @method Customer            setNameSlug()          Sets the current record's "name_slug" value
@@ -29,6 +33,8 @@
  * @method Customer            setContactPerson()     Sets the current record's "contact_person" value
  * @method Customer            setInvoicingAddress()  Sets the current record's "invoicing_address" value
  * @method Customer            setShippingAddress()   Sets the current record's "shipping_address" value
+ * @method Customer            setSeriesId()          Sets the current record's "series_id" value
+ * @method Customer            setSeries()            Sets the current record's "Series" value
  * @method Customer            setCommons()           Sets the current record's "Commons" collection
  * 
  * @package    siwapp
@@ -67,6 +73,9 @@ abstract class BaseCustomer extends sfDoctrineRecord
         $this->hasColumn('shipping_address', 'clob', null, array(
              'type' => 'clob',
              ));
+        $this->hasColumn('series_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
 
 
         $this->index('cstm', array(
@@ -89,6 +98,11 @@ abstract class BaseCustomer extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Series', array(
+             'local' => 'series_id',
+             'foreign' => 'id',
+             'onDelete' => 'set null'));
+
         $this->hasMany('Common as Commons', array(
              'local' => 'id',
              'foreign' => 'customer_id'));

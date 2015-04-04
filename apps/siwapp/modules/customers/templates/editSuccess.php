@@ -31,6 +31,11 @@ $customer = $customerForm->getObject();
       <span class="_50"><?php echo render_tag($customerForm['invoicing_address'])?></span>
       <span class="_50"><?php echo render_tag($customerForm['shipping_address'])?></span>
     </li>
+    <?php echo $customerForm['series_id']->renderRow(array('class' => error_class($customerForm['series_id']))) ?>    
+    <li>        
+      <input name="create_customer_series" class="create_series" checked="checked" id="create_customer_series" type="checkbox" value="on" />
+      <label for="create_customer_series" class="create_series">Create a new invoice series for this customer</label>
+    </li>
   </ul>
 </div>
   <div id="saving-options" class="block">
@@ -48,6 +53,24 @@ $customer = $customerForm->getObject();
   </div>
   </form>
 </div>
-<?php
-echo javascript_tag(" $('#customer-data input[type=text], #customer-data textarea').SiwappFormTips();") // See invoice.js
-?>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+  $('#customer-data input[type=text], #customer-data textarea').SiwappFormTips(); // See invoice.js
+  
+  $('#customer_series_id').change(function(){
+    if( $(this).val() ) {
+      $('#create_customer_series')
+        .attr('checked', false)
+        .parent().hide();
+    }
+    else {
+      $('#create_customer_series')
+        .attr('checked', false)
+        .parent().show();
+    }
+  }).trigger('change');
+});
+
+//]]>
+</script>

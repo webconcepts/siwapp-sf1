@@ -15,5 +15,8 @@ class siwappConfiguration extends sfApplicationConfiguration
     
     if (!defined('DOMPDF_LOG_OUTPUT_FILE'))
       define("DOMPDF_LOG_OUTPUT_FILE", false); // disable logging
+
+    if(!defined('DOMPDF_ENABLE_CSS_FLOAT'))
+      define("DOMPDF_ENABLE_CSS_FLOAT", true);
   }
 }

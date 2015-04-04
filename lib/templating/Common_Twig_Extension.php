@@ -22,8 +22,9 @@ class Common_Twig_Extension extends Twig_Extension
       'unhttp'      => new Twig_Filter_Function('common_twig_extension_unhttp'),
       'product_reference' => new Twig_Filter_Function('product_reference'),
       'firstword'   => new Twig_Filter_Function('common_twig_extension_first_word'),
-	  // Custom
-	  'globalurl'      => new Twig_Filter_Function('common_twig_extension_globalurl'),
+      'zeropad'     => new Twig_Filter_Function('common_twig_extension_zeropad'),
+  	  // Custom
+  	  'globalurl'   => new Twig_Filter_Function('common_twig_extension_globalurl'),
     );
   }
   
@@ -62,4 +63,9 @@ function common_twig_extension_first_word($string)
 {
   $array = explode(' ', $string);
   return $array[0];
+}
+
+function common_twig_extension_zeropad($string, $length = 3)
+{
+  return sprintf('%0'.$length.'d', $string);
 }

@@ -85,7 +85,8 @@ class printActions extends sfActions
         $this->forward404();
         break;
       case 1:
-        $name = $translatedModel."-{$ids[0]}";
+        $object = Doctrine::getTable($model)->find($ids[0]);
+        $name = $translatedModel.'-'.$object;
         break;
       default:
         $name = "$n-".$translatedModel."s";

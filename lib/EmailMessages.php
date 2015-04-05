@@ -116,7 +116,7 @@ class InvoiceMessage extends SiwappMessage
       $pdf = $invoicePrinter->renderPdf($data)->output();
       $attachment = new Swift_Attachment(
                             $pdf,
-                            $translatedModel.'-'.$invoice->getId().'.pdf',
+                            $translatedModel.'-'.$invoice.'.pdf',
                             'application/pdf'
                             );
       $this

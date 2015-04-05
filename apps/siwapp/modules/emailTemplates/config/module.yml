@@ -2,7 +2,7 @@ all:
   urls:
     include: []
     variables:
-      editRow: emailtemplates/edit
-      showRow: emailtemplates/edit
+      editRow: emailTemplates/edit
+      showRow: emailTemplates/edit
       save: @emailtemplates?action=save
       deleteAction:  @emailtemplates?action=delete

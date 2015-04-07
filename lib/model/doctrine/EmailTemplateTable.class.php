@@ -25,7 +25,7 @@ class EmailTemplateTable extends Doctrine_Table
 	 */
 	public static function getTemplateForModel($model='Invoice')
 	{
-		$templates = Doctrine::getTable('Template')->createQuery()
+		$templates = Doctrine::getTable('EmailTemplate')->createQuery()
 			->where('models LIKE ?', '%'.$model.'%')->limit(1)->execute();
 
 		if ($templates->count())

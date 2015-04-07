@@ -36,11 +36,16 @@ class InvoiceSender
 			$message = new InvoiceMessage($invoice, $this->i18n);
 			if($message->getReadyState())
 			{
-				$result = $this->mailer->send($message);
+				$result = $this->mailer->send($message, $failedRecipients);
 				if($result)
 				{
 					$invoice->setSentByEmail(true);
 					$invoice->save();
+				}
+				if( !empty($failedRecipients) )
+				{
+					$this->error = 'Failed to send to '.implode(', ', $failedRecipients);
+					return false;
 				}
 			}
 		} 

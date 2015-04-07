@@ -147,7 +147,8 @@ class invoicesActions extends sfActions
   
   protected function sendEmail(Invoice $invoice)
   {
-    $sender = new InvoiceSender($this->getMailer(), $this->getContext()->getI18N());    
+    $i18n = $this->getContext()->getI18N();
+    $sender = new InvoiceSender($this->getMailer(), $i18n);    
     if(!$sender->send($invoice))
     {
       $message = sprintf($i18n->__('There is a problem with invoice %s'), $invoice).': '.$sender->error;

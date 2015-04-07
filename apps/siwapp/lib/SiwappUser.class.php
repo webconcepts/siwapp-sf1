@@ -10,8 +10,17 @@ class SiwappUser extends sfGuardSecurityUser
   
   public function loadUserSettings()
   {
+    $culture = '_'.PropertyTable::get('country', 'US');
+    if ($this->getLanguage()) {
+      $culture = $this->getLanguage().$culture; 
+    }
+    else {
+      $culture = PropertyTable::get('language', 'en').$culture;
+    }
+
     $currency = PropertyTable::get('currency', 'USD');
     $currency_decimals = PropertyTable::get('currency_decimals', 2);
+    
     $siwapp_mandatory_modules = array_keys(
                                            sfConfig::get('app_modules_mandatory')
                                            );
@@ -27,10 +36,6 @@ class SiwappUser extends sfGuardSecurityUser
                                     $siwapp_optional_modules
                                     )
                         );
-    
-    $culture = $this->getLanguage();
-    if($this->getCountry()) $culture .= '_'.$this->getCountry();
-
     $this->setCulture($culture);
   }
   

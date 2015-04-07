@@ -22,6 +22,8 @@ class GlobalSettingsForm extends FormsContainer
       'company_email'    => new sfWidgetFormInputText(),
       'company_url'      => new sfWidgetFormInputText(),
       'currency'         => new sfWidgetFormI18nChoiceCurrency(array('culture' => $culture)),
+      'country'          => new sfWidgetFormI18nChoiceCountry(array('culture' => $culture)),
+      'language'         => new sfWidgetFormI18nChoiceLanguage(array('culture' => $culture)),
       'legal_terms'      => new sfWidgetFormTextarea(array(), array('cols' => '30', 'rows' => '7')),
       'pdf_size'         => new sfWidgetFormSelect(array('choices' => self::$paper_sizes)),
       'pdf_orientation'  => new sfWidgetFormSelect(array('choices' => array('portrait', 'landscape')))
@@ -48,6 +50,8 @@ class GlobalSettingsForm extends FormsContainer
       'company_email'    => PropertyTable::get('company_email'),
       'company_url'      => PropertyTable::get('company_url'),
       'currency'         => PropertyTable::get('currency', 'USD'),
+      'country'          => PropertyTable::get('country', 'US'),
+      'language'         => PropertyTable::get('language', 'en'),
       'legal_terms'      => PropertyTable::get('legal_terms'),
       'pdf_size'         => PropertyTable::get('pdf_size', 'a4'),
       'pdf_orientation'  => PropertyTable::get('pdf_orientation', 'portrait')
@@ -76,6 +80,8 @@ class GlobalSettingsForm extends FormsContainer
                                      )),
       'company_logo_delete' => new sfValidatorPass(),
       'currency'            => new sfValidatorString(array('max_length' => 50, 'required' => true)),
+      'country'             => new sfValidatorString(array('required' => true)),
+      'language'            => new sfValidatorString(array('required' => true)),
       'legal_terms'         => new sfValidatorString(array('required' => false)),
       'pdf_size'            => new sfValidatorString(array('required' => false)),
       'pdf_orientation'     => new sfValidatorString(array('required' => false))

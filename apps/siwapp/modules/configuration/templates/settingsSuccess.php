@@ -18,7 +18,9 @@
         <?php echo $form['company_email']->renderRow(array('class' => 'full '.error_class($form['company_email']))) ?>
         <?php echo $form['company_url']->renderRow(array('class' => 'full '.error_class($form['company_url']))) ?>
         <?php echo $form['company_logo']->renderRow(array('class' => error_class($form['company_logo']))) ?>
+        <?php echo $form['country']->renderRow(array('class' => error_class($form['country']))) ?>        
         <?php echo $form['currency']->renderRow(array('class' => error_class($form['currency']))) ?>
+        <?php echo $form['language']->renderRow(array('class' => error_class($form['language']))) ?>
       </ul>
     </fieldset>
     

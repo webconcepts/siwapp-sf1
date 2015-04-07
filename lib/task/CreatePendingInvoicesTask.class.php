@@ -30,12 +30,15 @@ EOF;
     sfContext::createInstance($appConfig);
 
     $databaseManager = new sfDatabaseManager($config);   
+
+    $i18n = new sfI18n($appConfig);
+    $i18n->setCulture(PropertyTable::get('language', 'en').'_'.PropertyTable::get('country', 'US'));
     
     // generate pending
     $invoices = RecurringInvoiceTable::createPendingInvoices();
 
     // send invoices
-    $sender = new InvoiceSender($this->getMailer(), new sfI18n($appConfig));
+    $sender = new InvoiceSender($this->getMailer(), $i18n);
     foreach( $invoices as $i )
     {      
       if($i->getRecurringInvoice()->send_on_create) 

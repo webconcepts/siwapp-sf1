@@ -10,6 +10,11 @@
  */
 class commonActions extends sfActions
 {
+  public function preExecute()
+  {
+    $this->culture  = $this->getUser()->getCulture();
+  }
+
   /**
    * Receives the Invoice form data and calculates each row total amount and
    * full invoice totals. Returns a json

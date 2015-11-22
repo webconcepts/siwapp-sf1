@@ -68,6 +68,7 @@ class Printer extends PrinterAbstract
       sfAutoloadAgain::getInstance()->register();
     $q->setProtocol('http://');
     $q->setHost($_SERVER['HTTP_HOST']);
+    $q->setBasePath('/');
     $q->setPaper($pageSize, $pageOrientation);
     $q->render();
     ini_set('error_reporting',$previous_error_reporting);

@@ -13,7 +13,7 @@ class SettingsTagsArray extends Common_Twig_TagsArray
       switch ($property->keey)
       {
         case 'company_logo':
-          $value = str_replace("\\", "/", GlobalSettingsForm::getUploadsDir()) . "/$value";
+          $value = "/uploads/$value";
           break;
       }
       

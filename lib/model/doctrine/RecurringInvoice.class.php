@@ -181,10 +181,13 @@ class RecurringInvoice extends BaseRecurringInvoice
     // Add specific fields for Invoice and hydrate.
     $data  = array_merge($data, array(
       'recurring_invoice_id' => $this->getId(),
-      'issue_date'           => sfDate::getInstance()->format('Y-m-d'),
-      'due_date'             => sfDate::getInstance()->addDay($this->getDaysToDue())->format('Y-m-d'),
+      'issue_date'           => sfDate::getInstance()->format('Y-m-d'),      
       'draft'                => false
       ));
+    if ($this->getDaysToDue() !== null) 
+    {
+      $data['due_date'] = sfDate::getInstance()->addDay($this->getDaysToDue())->format('Y-m-d');
+    }
     $i->fromArray($data);
     
     // Copy Items and taxes

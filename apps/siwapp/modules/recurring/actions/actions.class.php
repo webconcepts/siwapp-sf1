@@ -198,9 +198,9 @@ class recurringActions extends sfActions
     {      
       if($i->getRecurringInvoice()->send_on_create) 
       {
-        if(!$sender->send($invoice))
+        if(!$sender->send($i))
         {
-          $message = sprintf($i18n->__('There is a problem with invoice %s'), $invoice).': '.$sender->error;
+          $message = sprintf($i18n->__('There is a problem with invoice %s'), $i).': '.$sender->error;
           $this->getUser()->error($message);
         }
       }
